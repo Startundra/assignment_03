@@ -1,10 +1,10 @@
 # NAME PLACEHOLDER
 
 ## Description
-This will be a description at some point
+This is a program that allows users to easily manage their bank transactions
 
 ## Author
 Isaac Reid
 
 ## Assignment
-Assignment 3: jeez louise
+Assignment threes: jeez louise
