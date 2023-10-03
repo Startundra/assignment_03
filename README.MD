@@ -1,7 +1,6 @@
 # NAME PLACEHOLDER
 
 ## Description
-This is a program that allows users to easily manage their bank transactions
 
 ## Author
 Isaac Reid
@@ -16,6 +15,8 @@ Assignment threes: jeez louise
 ## account_balances.txt
 
 ## bank_transactions.py
+This is a program that allows users to easily manage their bank transactions
 
-## interest_update.py 
-
+## interest_update.py
+apply interest to multiple customers accounts
+to help users grow their wealth
