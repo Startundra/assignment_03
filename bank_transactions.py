@@ -7,14 +7,15 @@ Notes: ATM width is 40 chrs
 """
 
 import random as r
-transaction_optiosn = ["D", "W", "Q",]
+import os
+from time import sleep
 
+transaction_options = ["D", "W", "Q",]
 users_current_balance = float(r.randint(-100000, 1000000))/100
-
 user_is_quitter = False
 
 
-# gets users choice from the manu
+# gets users choice from the menu
 def interface_main():
     global users_current_balance
 
@@ -23,7 +24,7 @@ def interface_main():
         ***************************************         
                 PIXELL RIVER FINANCIAL
                     ATM Simulator
-        Your current balance is: ${users_current_balance:2}
+        Your current balance is: ${"%.2f" % users_current_balance}
 
                     Deposit: D
                     Withdraw: W
@@ -33,6 +34,7 @@ def interface_main():
     
     done = False
     while not done: 
+        global user_is_quitter
 
         try: 
             menu_choice = input("Enter your selection: ").upper()
@@ -53,7 +55,7 @@ def interface_main():
                 print(
                     f"""         
                     ***************************************
-                    Your current balance is: ${users_current_balance:2}
+                    Your current balance is: ${"%.2f" % users_current_balance}
                     ***************************************
                     """
                 )
@@ -75,19 +77,17 @@ def interface_main():
                     print(
                         f"""
                         ***************************************
-                        Your current balance is: ${users_current_balance:2}
+                        Your current balance is: ${"%.2f" % users_current_balanced}
                         ***************************************
                         """
                     )
 
             # -------------------------Quit----------------------
             elif menu_choice[0] == "Q":
-
-                #return "Q"
-                quit()
-
+                user_is_quitter = True
+                done = True
+                
             else:
-
                 print(
                     """
                     ***************************************
@@ -102,6 +102,8 @@ def interface_main():
 while not user_is_quitter:
     interface_main()
 
+sleep(3)
+os.system('cls' if os.name == 'nt' else 'clear')
 
 
 quit()
