@@ -7,7 +7,7 @@ Usage: Run in the terminal
 import time
 import pprint
 import datetime
-
+import csv
 # Global variables
 accounts_list = []
 csv_file_string = ""
@@ -61,22 +61,26 @@ def read_account_balances():
     return account_balances
 
 def generate_csv_filename(first_name, last_name):
-    current_time = datetime.datetime.now
-    csv_filename = str(
+    current_time = datetime.datetime.now()
+    csv_filename = (
         str(current_time.year)
         + "-"
         + str(current_time.month)
         + "-"
         + str(current_time.day)
         + "-"
-        + str(first_name[0].upper(), last_name[0].upper())
+        + str(first_name[0]).upper(), str(last_name[0]).upper()
         + ".csv"
+    )
     return csv_filename
-        )
 
 def write_csv_file():
-    gloal csv_file_string
-    csv_file = open(csv_file_string, "w")
+    global accounts_list
+    with open(generate_csv_filename("john", "doe"), "w") as csv_file:
+        csv_writer = csv.writer(csv_file)
+        csv_writer.writerow(["Account", "Balance"])
+        for acc in accounts_list:
+            csv_writer.writerow(acc.account_number, acc.balance)
 
 # doesnt create anything actually it just populates i'm such a fraud
 def create_accounts(balance_dictionary):
@@ -123,4 +127,5 @@ for acc in accounts_list:
 print_accounts_pretty()
 
 # CSV File
-csv_file_string = generate_csv_filename()
+csv_file_string = generate_csv_filename("Robertson", "Screwdriver")
+
