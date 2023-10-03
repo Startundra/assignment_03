@@ -76,12 +76,12 @@ def generate_csv_filename(first_name, last_name):
 
 def write_csv_file():
     global accounts_list
-    with open(generate_csv_filename("john", "doe"), "w") as csv_file:
+    with open(str(generate_csv_filename("john", "doe")), "w", newline = '') as csv_file:
         csv_writer = csv.writer(csv_file)
         csv_writer.writerow(["Account", "Balance"])
         for acc in accounts_list:
-            csv_writer.writerow(acc.account_number, acc.balance)
-
+            csv_writer.writerow([acc.account_number, acc.balance])
+            
 # doesnt create anything actually it just populates i'm such a fraud
 def create_accounts(balance_dictionary):
     global accounts_list
@@ -128,4 +128,4 @@ print_accounts_pretty()
 
 # CSV File
 csv_file_string = generate_csv_filename("Robertson", "Screwdriver")
-
+write_csv_file()
