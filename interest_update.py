@@ -14,6 +14,8 @@ csv_file_string = ""
 
 # Class which holds acc. info
 class Account:
+
+    # duh doy its bob the constructor
     def __init__(self, account_number, balance, interest_rate):
         self.account_number = str(account_number)
         self.balance = float(balance)
@@ -23,7 +25,7 @@ class Account:
     def update_balance(self, amount):
         self.balance += amount      
     
-    #
+    # applies monthly interest and overwrites the balance value of self
     def apply_monthly_interest(self, flag_print_balance):
         opening_balance = self.balance
         self.balance += (self.balance * self.interest_rate) / 12
@@ -60,6 +62,7 @@ def read_account_balances():
     account_balances_file.close()
     return account_balances
 
+# generates a valid csv filename for the current date and returns as a string
 def generate_csv_filename(first_name, last_name):
     current_time = datetime.datetime.now()
     csv_filename = (
@@ -74,6 +77,7 @@ def generate_csv_filename(first_name, last_name):
     )
     return csv_filename
 
+# Writes a CSV file using current accounts class list
 def write_csv_file():
     global accounts_list
     with open(str(generate_csv_filename("john", "doe")), "w", newline = '') as csv_file:
@@ -81,7 +85,16 @@ def write_csv_file():
         csv_writer.writerow(["Account", "Balance"])
         for acc in accounts_list:
             csv_writer.writerow([acc.account_number, acc.balance])
+        csv_file.close()
             
+# Generates a csv_dict and prints it, does not save the dictionary
+def generate_csv_dict(csv_filepath):
+    with open (str(csv_filepath)) as csv_file:
+        csv_reader = csv.DictReader(csv_file)
+        for row in csv_reader:
+            print({row["Account"], row["Balance"]})
+    return None
+
 # doesnt create anything actually it just populates i'm such a fraud
 def create_accounts(balance_dictionary):
     global accounts_list
@@ -129,3 +142,6 @@ print_accounts_pretty()
 # CSV File
 csv_file_string = generate_csv_filename("Robertson", "Screwdriver")
 write_csv_file()
+
+# CSV Dict
+generate_csv_dict("('2023-10-3-J', 'D.csv')")
