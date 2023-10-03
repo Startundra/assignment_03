@@ -72,7 +72,7 @@ def generate_csv_filename(first_name, last_name):
         + "-"
         + str(current_time.day)
         + "-"
-        + str(first_name[0]).upper(), str(last_name[0]).upper()
+        + str(first_name[0]).upper() + str(last_name[0]).upper()
         + ".csv"
     )
     return csv_filename
@@ -92,7 +92,8 @@ def generate_csv_dict(csv_filepath):
     with open (str(csv_filepath)) as csv_file:
         csv_reader = csv.DictReader(csv_file)
         for row in csv_reader:
-            print({row["Account"], row["Balance"]})
+            print("flag_row",  row)
+            print(row["Account"], row["Balance"])
     return None
 
 # doesnt create anything actually it just populates i'm such a fraud
@@ -144,4 +145,4 @@ csv_file_string = generate_csv_filename("Robertson", "Screwdriver")
 write_csv_file()
 
 # CSV Dict
-generate_csv_dict("('2023-10-3-J', 'D.csv')")
+generate_csv_dict("2023-10-3-JD.csv")
