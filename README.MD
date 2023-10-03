@@ -8,3 +8,14 @@ Isaac Reid
 
 ## Assignment
 Assignment threes: jeez louise
+
+# File list 
+
+## .gitignore
+
+## account_balances.txt
+
+## bank_transactions.py
+
+## interest_update.py 
+
