@@ -4,11 +4,13 @@ Author: Isaac Reid
 Date: 01/10/23
 Usage: Run in the terminal
 """
-
+import time
 import pprint
+import datetime
 
 # Global variables
 accounts_list = []
+csv_file_string = ""
 
 # Class which holds acc. info
 class Account:
@@ -30,6 +32,7 @@ class Account:
                 f"\nOpening Balance: {opening_balance}" +
                 f" Closing Balance: {self.balance}"  +
                 f" ({self.interest_rate}% interest earned)\n")
+            
 # Returns a dictionary of account balances
 def read_account_balances():
     account_balances = {}
@@ -56,6 +59,24 @@ def read_account_balances():
         account_balances.update({account:balance})
     account_balances_file.close()
     return account_balances
+
+def generate_csv_filename(first_name, last_name):
+    current_time = datetime.datetime.now
+    csv_filename = str(
+        str(current_time.year)
+        + "-"
+        + str(current_time.month)
+        + "-"
+        + str(current_time.day)
+        + "-"
+        + str(first_name[0].upper(), last_name[0].upper())
+        + ".csv"
+    return csv_filename
+        )
+
+def write_csv_file():
+    gloal csv_file_string
+    csv_file = open(csv_file_string, "w")
 
 # doesnt create anything actually it just populates i'm such a fraud
 def create_accounts(balance_dictionary):
@@ -98,5 +119,8 @@ print_accounts_pretty()
 for acc in accounts_list:
     acc.apply_monthly_interest(False)
 
-#Pretty Print 2: Electric boogaloo
+# Pretty Print 2: Electric boogaloo
 print_accounts_pretty()
+
+# CSV File
+csv_file_string = generate_csv_filename()
