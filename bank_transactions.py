@@ -77,7 +77,7 @@ def interface_main():
                     print(
                         f"""
                         ***************************************
-                        Your current balance is: ${"%.2f" % users_current_balanced}
+                        Your current balance is: ${"%.2f" % users_current_balance}
                         ***************************************
                         """
                     )
